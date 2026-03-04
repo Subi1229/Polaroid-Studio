@@ -1,0 +1,321 @@
+.instructions-page {
+  background: #F5F0EB;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 60px;
+  box-sizing: border-box;
+
+  overflow: hidden;
+  position:relative;
+  
+}
+
+.instructions-container {
+  display: flex;
+  gap: 48px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.main-card {
+  width: 536px;
+  height: 651px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 43px;
+}
+
+.white-card {
+  width: 536px;
+  height: 534px;
+
+  padding: 16px;
+  background: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  box-sizing: border-box;
+}
+
+.back-frame {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 11px 8px;
+
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.button-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.back-icon {
+  width: 20px;
+}
+
+.photo-button:hover {
+  background: #f7f7f7;
+}
+
+.button-frame {
+  border: 1px solid #CECECE;
+
+  padding: 10px 31px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 28px;
+
+  flex: 1;
+}
+
+.photo-button {
+  width: 100%;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 40px;
+  border: 3px dashed black;
+
+  font-family: "Inter";
+  font-size: 22px;
+
+  background: transparent;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.filter-active,
+.filter-inactive {
+  width: 160px;
+  height: 58px;
+
+  border-radius: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Inter";
+  font-size: 22px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.filter-active {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.filter-inactive {
+  background: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.steps-card {
+  width: 282px;
+
+  padding: 16px 16px 90px 16px;
+
+  background: white;
+  margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  transform: rotate(8.53deg);
+
+  position: relative;
+}
+
+/* hearts inside steps card */
+
+.heart-outline,
+.heart-solid {
+  position: absolute;
+  width: 48px;
+  height: 47px;
+  object-fit: contain;
+  transform: rotate(-8.53deg); /* keeps hearts upright */
+  bottom: 16px;        /* moved lower */
+  z-index: 0;          /* send behind text */
+
+}
+
+.heart-solid {
+  bottom: 12px;
+  left: 12px;
+}
+
+.heart-outline {
+  bottom: 12px;
+  right: 12px;
+}
+
+
+.steps-title {
+  font-family: "Jomolhari";
+  font-size: 28px;
+}
+
+.step-item {
+  width: 250px;
+
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid #CECECE;
+  background-color: white;
+
+  font-family: "Inter";
+  font-size: 18px;
+}
+
+@media (max-width: 1400px) {
+  .instructions-container {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 1200px) {
+  .instructions-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-height: 850px) {
+  .instructions-container {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-height: 720px) {
+  .instructions-container {
+    transform: scale(0.75);
+  }
+}
+
+
+.doodle{
+  position:absolute;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* FAVORITE PERSON */
+.fav{
+  width:550px;
+  height:300px;
+  left:-143px;
+  top:-19px;
+  transform:rotate(-25.84deg);
+}
+
+/* CHERRY */
+.cherry{
+  width:250px;
+  height:250px;
+  left:-100.77px;
+  top:402px;
+  transform:rotate(47.05deg);
+}
+
+/* HEART OUTLINE BOTTOM LEFT */
+.heart-outline-left{
+  width:250px;
+  height:250px;
+  left:-196px;
+  top:828px;
+  transform:rotate(0deg);
+}
+
+/* HEART OUTLINE TOP RIGHT */
+.heart-outline-top{
+  width:250px;
+  height:250px;
+  left:1233px;
+  top:-31px;
+}
+
+/* LIPS */
+.lips{
+  width:250px;
+  height:250px;
+  left:1588px;
+  top:830px;
+ 
+  transform:rotate(25.34deg);
+
+  animation: kissPulse 2.2s ease-in-out infinite;
+}
+
+/* HEART SOLID */
+.bow-bg{
+  width:250px;
+  height:250px;
+  left:685px;
+  top:940px;
+  transform:rotate(-10.34deg);
+}
+
+/* LOVE */
+.love{
+  width:375px;
+  height:600px;
+  left:1648px;
+  top:140px;
+}
+.doodle-canvas{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%) scale(0.6);
+  width:1728px;
+  height:1117px;
+  pointer-events:none;
+  z-index:0;
+}
+
+@keyframes kissPulse {
+  0%   { transform: rotate(25.34deg) scale(1) translateY(0); }
+  30%  { transform: rotate(25.34deg) scale(1.06) translateY(-4px); }
+  50%  { transform: rotate(25.34deg) scale(0.98) translateY(0); }
+  70%  { transform: rotate(25.34deg) scale(1.04) translateY(-2px); }
+  100% { transform: rotate(25.34deg) scale(1) translateY(0); }
+}

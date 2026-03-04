@@ -1,0 +1,150 @@
+/* page */
+
+.film-page{
+  background:#F5F0EB;
+  height:100vh;
+
+  padding:30px 80px 20px;
+  box-sizing:border-box;
+
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+
+.film-section{
+  position:relative;
+  margin-top:0px;
+}
+
+/* title */
+
+.film-header{
+  display:flex;
+  justify-content:center;
+  margin-bottom:10px;
+}
+
+.film-header h2{
+  font-family:"Luxurious Script", cursive;
+  font-size:86px;
+  font-weight:400;
+}
+
+/* carousel section */
+
+.film-section{
+  position:relative;
+  margin-top:10px;
+}
+
+/* horizontal scroll container */
+
+.scroll-container{
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+
+  width:100%;
+  padding:20px 34px;
+}
+
+.scroll-container::-webkit-scrollbar{
+  display:none;
+}
+
+/* film row */
+
+.film-row{
+  display:flex;
+  align-items:flex-start;
+  gap:40px;
+  width:max-content;
+}
+
+/* film item */
+
+.film-item{
+  flex:0 0 auto;
+  cursor:pointer;
+}
+
+/* selection border */
+
+.film-frame-wrapper{
+  border:2px dashed transparent;
+}
+
+.film-frame-wrapper.selected{
+  border:3px dashed black;
+}
+
+/* arrows */
+
+.arrow-btn{
+  position:absolute;
+  top:38%;
+  transform:translateY(-50%);
+
+  width:46px;
+  height:46px;
+
+  border-radius:50%;
+  border:2px dashed black;
+  background:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+  z-index:10;
+}
+
+.arrow-left{
+  left:0;
+  transform:translateX(-50%);
+}
+
+.arrow-right{
+  right:0;
+  transform:translateX(50%);
+}
+
+.arrow-icon{
+  width:24px;
+  height:24px;
+}
+
+/* continue */
+
+.film-footer{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:5;
+  height:90px;
+}
+
+.continue-btn{
+  background:black;
+  color:white;
+  border:none;
+  border-radius:40px;
+  padding:10px 28px;
+  font-size:16px;
+}
+
+/* title animation */
+
+
+.film-frame-wrapper {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* selected film grows */
+.film-frame-wrapper.selected {
+  transform: scale(1.08);
+}
