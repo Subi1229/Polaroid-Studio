@@ -1,0 +1,199 @@
+.preview-page{
+  background:#F5F0EB;
+  height:100vh;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  overflow:visible; /* allow scissors outside strip */
+}
+
+/* CENTER LAYOUT */
+
+.preview-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:36px;
+  position:relative;
+  z-index:2;
+  transform:scale(0.9);
+}
+
+/* FILM */
+
+.film-wrapper{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  width:260px;
+  position:relative; /* anchor scissors here */
+
+  animation: filmDrop 0.9s ease-out forwards;
+
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+}
+
+/* BUTTONS */
+
+.action-buttons{
+  display:flex;
+  gap:18px;
+}
+
+/* DOWNLOAD */
+
+.download-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:12px 24px;
+  justify-content:center;
+
+  border:none;
+  border-radius:30px;
+
+  background:black;
+  color:white;
+
+  font-family:"Inter";
+  font-size:16px;
+
+  cursor:pointer;
+}
+
+/* OTHER BUTTONS */
+
+.outline-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  padding:12px 26px;
+
+  border:2px dashed #000;
+  justify-content:center;
+  border-radius:30px;
+
+  background:white;
+
+  font-family:"Inter";
+  font-size:16px;
+
+  cursor:pointer;
+}
+
+/* ICON SIZE */
+
+.action-buttons svg{
+  width:24px;
+  height:24px;
+  flex-shrink:0;
+}
+
+/* LABEL TEXT */
+
+.photo-label{
+  position:absolute;
+  right:-20px;
+  top:80px;
+
+  width:200px;
+
+  text-align:center;
+
+  font-family:"Inter";
+  font-size:20px;
+  color:#333;
+}
+
+/* MULTI LAYOUT */
+
+.multi-layout{
+  flex-direction:row;
+  align-items:center;
+  gap:40px;
+}
+
+.multi-layout .action-buttons{
+  flex-direction:column;
+  order:-1;
+}
+
+.multi-layout .film-wrapper > *{
+  transform:scale(0.75);
+  transform-origin:center;
+}
+
+/* SINGLE FRAME */
+
+.single-film > *{
+  transform:scale(0.80);
+  transform-origin:center;
+}
+
+/* CUT BUTTON */
+
+.cut-button{
+  position:absolute;
+
+  left:100%;
+  margin-left:20px;
+
+  bottom:30px;
+
+  width:110px;
+  height:auto;
+
+  cursor:pointer;
+  z-index:10;
+
+  transition:transform .2s ease;
+}
+
+.cut-button:hover{
+  transform:scale(1.1);
+}
+
+/* CUT FRAMES */
+
+.cut-frames{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.cut-frame{
+  width:200px;
+  cursor:pointer;
+  transition:transform .2s ease;
+}
+
+.cut-frame img{
+  width:100%;
+
+  border:10px solid #fff;
+
+  box-shadow:0 14px 20px rgba(0,0,0,0.25);
+}
+
+.cut-frame:hover{
+  transform:scale(1.05);
+}
+
+/* FILM PRINT ANIMATION */
+
+@keyframes filmDrop{
+  0%{
+    transform:translateY(-80px);
+    opacity:0;
+  }
+
+  100%{
+    transform:translateY(0);
+    opacity:1;
+  }
+}

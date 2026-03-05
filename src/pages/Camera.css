@@ -1,0 +1,153 @@
+.camera-page{
+    background:#F5F0EB;
+    height:100vh;
+  
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  
+    padding:40px 60px;
+    box-sizing:border-box;
+  
+    overflow:hidden;
+    position:relative;
+  }
+  
+  .camera-container{
+    display:flex;
+    gap:48px;
+    width:100%;
+    justify-content:center;
+    align-items:flex-start;
+    z-index:2;
+  }
+  
+  /* MAIN CARD */
+  
+  .camera-main-card{
+    width:536px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+  
+  .camera-white-card{
+    width:536px;
+    height:534px;
+  
+    padding:16px;
+    background:white;
+  
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  
+    box-sizing:border-box;
+  }
+  
+  /* BACK BUTTON */
+  
+  .back-frame{
+    height:45px;
+    display:flex;
+    align-items:center;
+  }
+  
+  .back-button{
+    display:flex;
+    align-items:center;
+    gap:5px;
+  
+    padding:11px 8px;
+  
+    font-family:"Poppins";
+    font-size:16px;
+    font-weight:500;
+  
+    cursor:pointer;
+  }
+  
+  /* CAMERA PREVIEW */
+  
+  /* CAMERA PREVIEW */
+
+  .camera-preview{
+    width:100%;
+    height:360px;
+    border-radius:12px;
+    overflow:hidden;
+    position:relative;
+    background:#888;
+  }
+
+  .camera-inner{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:10px;
+    height:100%;
+  }
+  
+  .camera-video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scaleX(-1);
+  }
+  
+  .dark-preview{
+    filter:brightness(0.6);
+  }
+  
+  .countdown{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+  
+    font-size:80px;
+    font-weight:600;
+    color:white;
+  
+    text-shadow:0 0 20px rgba(0,0,0,0.7);
+  }
+  
+  .press-button{
+    width:100%;
+    height:56px;
+  
+    border-radius:32px;
+    border:none;
+  
+    background:black;
+    color:white;
+  
+    font-family:"Inter";
+    font-size:20px;
+  
+    cursor:pointer;
+  
+    margin-top:auto;
+  }
+  
+  .thumbnail-row{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+  }
+  
+  .thumbnail{
+    width:80px;
+    height:80px;
+    border-radius:16px;
+    object-fit:cover;
+  }
+  
+  .thumbnail:nth-child(1){ transform:rotate(-8deg); }
+  .thumbnail:nth-child(2){ transform:rotate(4deg); }
+  .thumbnail:nth-child(3){ transform:rotate(-4deg); }
+  
+  @keyframes thumbnailPop{
+    0%{ transform:scale(0.3); opacity:0; }
+    100%{ transform:scale(1); opacity:1; }
+  }

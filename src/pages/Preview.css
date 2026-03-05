@@ -1,0 +1,314 @@
+.preview-page{
+    background:#F5F0EB;
+    height:100vh;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  
+  /* CENTER LAYOUT */
+  
+  .preview-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:36px;
+    position:relative;
+    z-index:2;
+    transform:scale(0.9);
+  }
+  /* FILM */
+  
+  .film-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    animation: filmDrop 0.9s ease-out forwards;
+  
+    min-width:260px; 
+    overflow: visible; 
+     /* LOCK WIDTH so layout never shifts */
+  }
+  
+  /* BUTTONS */
+  
+  .action-buttons{
+    display:flex;
+    gap:18px;
+  }
+  
+  /* DOWNLOAD */
+  
+  .download-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  
+    padding:12px 24px;
+    justify-content:center;
+  
+    border:none;
+    border-radius:30px;
+  
+    background:black;
+    color:white;
+  
+    font-family:"Inter";
+    font-size:16px;
+  
+    cursor:pointer;
+  }
+  
+  /* OTHER BUTTONS */
+  
+  .outline-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  
+    padding:12px 26px;   /* slightly more */
+  
+    border:2px dashed #000;
+    justify-content:center;
+    border-radius:30px;
+  
+    background:white;
+  
+    font-family:"Inter";
+    font-size:16px;
+  
+    cursor:pointer;
+  }
+  
+  /* ICON SIZE */
+  
+  .action-buttons svg{
+    width:24px;
+    height:24px;
+    flex-shrink:0;
+    vertical-align: middle;
+    transform: scale(0.88);
+  }
+  /* ARROW TEXT */
+  
+  .photo-label{
+    position:absolute;
+  
+    right:-220px;       /* right side of strip */
+    top:50%;            /* vertical center */
+    transform:translateY(-50%);
+  
+    width:220px;
+  
+    text-align:center;
+  
+    font-family:"Inter";
+    font-size:20px;
+    color:#333;
+  
+    z-index:5;
+  }
+
+  .arrow{
+    position:absolute;
+  
+    top:153px;
+    left:925px;
+  
+    transform:rotate(28.02deg);
+  }
+  .multi-layout{
+    flex-direction:row;
+    align-items:center;
+    gap:40px;
+  }
+
+  .multi-layout .action-buttons{
+    flex-direction:column;
+    order:-1;
+
+  }
+
+  .multi-layout .film-wrapper{
+    animation: filmDrop 0.9s ease-out forwards;
+  }
+  
+  .multi-layout .film-wrapper > *{
+    transform: scale(0.75);
+    transform-origin:center;
+  }
+
+  .single-film > *{
+    transform: scale(0.80);
+    transform-origin: center;
+  }
+
+  .film-wrapper{
+    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+    overflow: visible;
+  }
+  
+  /* FILM PRINT ANIMATION */
+  
+  @keyframes filmDrop{
+  
+    0%{
+      transform:translateY(-80px);
+      opacity:0;
+    }
+  
+    100%{
+      transform:translateY(0);
+      opacity:1;
+    }
+  
+  }
+
+
+  /* SCISSORS BUTTON */
+
+
+
+.cut-button{
+  position:absolute;
+
+  right:-150px;       /* further from strip */
+  bottom:60px;
+
+  width:140px;        /* MUCH bigger */
+  height:auto;
+
+  cursor:pointer;
+  z-index:10;
+
+  transition:transform .2s ease;
+}
+
+.back-arrow{
+  transform:rotate(28deg);
+}
+
+.cut-button:hover{
+  transform:scale(1.08);
+  object-fit:contain;
+}
+
+/* CUT POLAROIDS */
+
+.cut-frames{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transform:scale(0.75);
+}
+.cut-frame{
+  background:inherit;
+  position:relative;
+  padding:14px;
+  padding-bottom:70px; /* extra bottom space */
+  box-shadow:0 12px 18px rgba(0,0,0,0.25);
+  cursor:pointer;
+  transition:transform .2s ease;
+  overflow:hidden;
+}
+
+.cut-frame.white{
+  background:#ffffff;
+}
+.cut-hearts-pattern{
+  position:absolute;
+  bottom:2px;
+  left:50%;
+  transform:translateX(-50%);
+  width:300px;
+  height:90px;
+  pointer-events:none;
+  z-index:1;
+}
+.cut-frame.black{
+  background:#000000;
+}
+
+
+
+
+.cut-frame:hover{
+  transform:scale(1.05);
+}
+
+.cut-frame.black .cut-bottom{
+  color:white;
+}
+
+.cut-hearts{
+  position:relative;
+  height:50px;
+  margin-top:6px;
+}
+
+.cut-hearts img{
+  position:absolute;
+}
+
+.cut-hearts .h1{
+  left:25px;
+  width:28px;
+  transform:rotate(-8deg);
+}
+
+.cut-hearts .h2{
+  left:70px;
+  width:32px;
+  transform:rotate(8deg);
+}
+
+.cut-hearts .h3{
+  left:115px;
+  width:28px;
+  transform:rotate(-4deg);
+}
+
+.cut-hearts img{
+  width:26px;
+}
+
+.cut-frame{
+  background:inherit;
+  position:relative;
+  padding:14px;
+}
+
+.cut-photo{
+  position:relative;
+  z-index:2;
+}
+
+.last-frame{
+  padding-bottom:60px;
+}
+
+.cut-photo img{
+  width:240px;
+  display:block;
+  
+}
+
+.cut-bottom{
+  position:absolute;
+  bottom:14px;          /* anchors text to bottom like original strip */
+  left:14px;
+  right:14px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  font-size:14px;
+  letter-spacing:1.2px;
+  font-family:"Inter";
+
+  color:#333;
+}

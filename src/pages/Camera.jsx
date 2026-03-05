@@ -2,6 +2,9 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
 import Doodles from "../pages/Doodles";
+import heartOutline from "../assets/heart-outline.png";
+import heartSolid from "../assets/heart-solid.png";
+import "./Camera.css";
 
 function Camera() {
   const navigate = useNavigate();
@@ -117,89 +120,109 @@ setCapturedImages((prev) => [...prev, imageData]);
   }
 
   return (
-  <div className="camera-page">
-
-    <Doodles />
-
-    <div className="camera-container">
-
-      <h1>Camera</h1>
-
-      <p>
-        Captured {capturedImages.length} / {maxPhotos}
-      </p>
-
-      {/* Video + Countdown Overlay */}
-      <div style={{ position: "relative", display: "inline-block" }}>
-
-        <video
-          ref={videoRef}
-          autoPlay
-          playsInline
-          style={{
-            width: "400px",
-            borderRadius: "12px",
-            background: "#000",
-            filter:
-              filter === "bw"
-                ? "grayscale(100%) contrast(130%) brightness(90%)"
-                : "none",
-          }}
-        />
-
-        {isCounting && countdown !== null && (
-          <div
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              fontSize: "80px",
-              fontWeight: "bold",
-              color: "white",
-              textShadow: "0 0 20px black",
-            }}
-          >
-            {countdown}
+    <div className="instructions-page">
+  
+      <Doodles />
+  
+      <div className="instructions-container">
+  
+        <div className="main-card">
+  
+          <div className="white-card">
+  
+            <div className="back-frame">
+              <div className="back-button" onClick={() => navigate("/instructions")}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="back-icon"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                  />
+                </svg>
+                Back
+              </div>
+            </div>
+  
+            <div className="camera-inner">
+  
+              <div className="camera-preview">
+              <video
+  ref={videoRef}
+  autoPlay
+  playsInline
+  className={`camera-video ${isCounting ? "dark-preview" : ""}`}
+  style={{
+    filter:
+      filter === "bw"
+        ? "grayscale(100%) contrast(130%) brightness(90%)"
+        : "none",
+  }}
+/>
+  
+                {isCounting && countdown !== null && (
+                  <div className="countdown">{countdown}</div>
+                )}
+              </div>
+  
+              <canvas ref={canvasRef} style={{ display: "none" }} />
+  
+              <button
+  className="press-button"
+  onClick={capturedImages.length < maxPhotos ? handleCapture : handleContinue}
+>
+  {capturedImages.length < maxPhotos ? "Press" : "Continue"}
+</button>
+  
+            </div>
+  
           </div>
-        )}
+  
+          {selectedFilm.type === "multi" && capturedImages.length > 0 && (
+            <div className="thumbnail-row">
+              {capturedImages.map((img, index) => (
+                <img key={index} src={img} alt="" className="thumbnail" />
+              ))}
+            </div>
+          )}
+  
+          
+  
+        </div>
+  
+        <div className="steps-card">
+  
+          <div className="steps-title">
+            Steps:
+          </div>
+  
+          <div className="step-item">
+            1. Select Color or b&w filter.
+          </div>
+  
+          <div className="step-item">
+            2. Choose take photo from webcam or upload from your device.
+          </div>
+  
+          <div className="step-item">
+            3. Press the shutter button to take photo and wait 5–10 secs for them to be printed.
+          </div>
+  
+          <img src={heartOutline} className="heart-outline" />
+          <img src={heartSolid} className="heart-solid" />
+  
+        </div>
+  
       </div>
-
-      <canvas ref={canvasRef} style={{ display: "none" }} />
-
-      {capturedImages.length < maxPhotos && (
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={handleCapture} disabled={isCounting}>
-            Capture Photo
-          </button>
-        </div>
-      )}
-
-      {selectedFilm.type === "multi" && capturedImages.length > 0 && (
-        <div style={{ marginTop: "20px" }}>
-          <h3>Thumbnails</h3>
-
-          {capturedImages.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`photo-${index + 1}`}
-              width={100}
-              style={{ margin: "5px", borderRadius: "8px" }}
-            />
-          ))}
-        </div>
-      )}
-
-      {capturedImages.length === maxPhotos && (
-        <div style={{ marginTop: "20px" }}>
-          <button onClick={handleContinue}>Continue</button>
-        </div>
-      )}
-
+  
     </div>
-  </div>
-);
+  );
 }
 
 export default Camera;

@@ -1,7 +1,7 @@
 import heartSolid from "../assets/heart-solid.png";
 import heartOutline from "../assets/heart-outline.png";
 
-export default function FilmFrame({film,images = [],variant = "full"
+export default function FilmFrame({film,images = [],variant = "full", developing = false
 }) {
   if (!film) return null;
 
@@ -9,6 +9,66 @@ export default function FilmFrame({film,images = [],variant = "full"
   const hasText = film.textLayout !== null && film.textLayout !== undefined;
   const isBlack = film.theme === "black";
 
+  const developStyles = `
+@keyframes developFilm {
+
+  0% {
+    opacity:0;
+    filter: blur(8px) brightness(1.6);
+  }
+
+  10% {
+    opacity:0.1;
+    filter: blur(7px) brightness(1.5);
+  }
+
+  20% {
+    opacity:0.2;
+    filter: blur(6px) brightness(1.45);
+  }
+
+  30% {
+    opacity:0.3;
+    filter: blur(5px) brightness(1.35);
+  }
+
+  40% {
+    opacity:0.4;
+    filter: blur(4px) brightness(1.25);
+  }
+
+  50% {
+    opacity:0.5;
+    filter: blur(3px) brightness(1.2);
+  }
+
+  60% {
+    opacity:0.6;
+    filter: blur(2px) brightness(1.15);
+  }
+
+  70% {
+    opacity:0.7;
+    filter: blur(1.5px) brightness(1.1);
+  }
+
+  80% {
+    opacity:0.8;
+    filter: blur(1px) brightness(1.05);
+  }
+
+  90% {
+    opacity:0.9;
+    filter: blur(0.5px) brightness(1.02);
+  }
+
+  100% {
+    opacity:1;
+    filter:none;
+  }
+
+}
+`;
   // 🔹 Scale control
   
   // 🔹 Dimensions
@@ -31,6 +91,8 @@ export default function FilmFrame({film,images = [],variant = "full"
   const textColor = isBlack ? "#ffffff" : "#000000";
 
   return (
+    <>
+    <style>{developStyles}</style>
     <div
       style={{
         width,
@@ -151,6 +213,12 @@ export default function FilmFrame({film,images = [],variant = "full"
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
+                
+                  opacity: developing ? 0 : 1,
+                
+                  animation: developing
+                    ? "developFilm 10s linear forwards"
+                    : "none",
                 }}
               />
             )}
@@ -177,6 +245,16 @@ export default function FilmFrame({film,images = [],variant = "full"
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
+                  
+                    opacity: developing ? 0 : 1,
+                  
+                    animation: developing
+                      ? "developFilm 5s linear forwards"
+                      : "none",
+                  
+                    animationDelay: developing
+                      ? `${index * 5}s`
+                      : "0s",
                   }}
                 />
               )}
@@ -213,11 +291,12 @@ export default function FilmFrame({film,images = [],variant = "full"
           >
             <div style={{ fontSize: 16 * scale }}>KO</div>
             <div style={{ fontSize: 12 * scale }}>
-              X &nbsp;&nbsp; P80/20 120
+              X &nbsp;&nbsp; P80/20 120 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
           </div>
         )}
       </div>
     </div>
+    </>
   );
 }

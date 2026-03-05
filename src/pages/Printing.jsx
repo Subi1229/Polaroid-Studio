@@ -1,29 +1,74 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
+import FilmFrame from "../components/FilmFrame";
+import Doodles from "../pages/Doodles";
+import "./Printing.css";
 
 function Printing() {
+
   const navigate = useNavigate();
-  const [dots, setDots] = useState('');
+  const { selectedFilm, capturedImages } = useAppContext();
+
+  const [visibleImages, setVisibleImages] = useState([]);
+  const [showPickup, setShowPickup] = useState(false);
 
   useEffect(() => {
-    let count = 0;
-    const interval = setInterval(() => {
-      count = (count + 1) % 4;
-      setDots('.'.repeat(count));
-    }, 500);
-    return () => clearInterval(interval);
-  }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate('/preview');
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [navigate]);
+    if (!selectedFilm) return;
+  
+    if (selectedFilm.type === "single") {
+  
+      setVisibleImages([capturedImages[0]]);
+  
+      setTimeout(() => {
+        setShowPickup(true);
+      }, 10000);
+  
+    } else {
+  
+      setVisibleImages(capturedImages);
+  
+      setTimeout(() => {
+        setShowPickup(true);
+      }, 15000);
+  
+    }
+  
+  }, [capturedImages, selectedFilm]);
+
+  function handlePickup() {
+    navigate("/preview");
+  }
+
+  if (!selectedFilm) return null;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
-      <h1>Printing{dots}</h1>
+
+    <div className="printing-page">
+
+      <Doodles />
+
+      <div className={`printing-container ${selectedFilm.type === "multi" ? "multi-layout" : ""}`}>
+
+      <div className={`printing-strip ${selectedFilm.type}`}>
+      <FilmFrame
+  film={selectedFilm}
+  images={visibleImages}
+  developing={true}
+  variant={selectedFilm.type === "multi" ? "thumbnail" : "full"}
+/>
+
+        </div>
+
+        {showPickup && (
+          <button className="pickup-btn" onClick={handlePickup}>
+            Pick Up
+          </button>
+        )}
+
+      </div>
+
     </div>
   );
 }
