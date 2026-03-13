@@ -1,0 +1,204 @@
+.upload-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+  height: 100%;
+}
+
+.upload-dropzone {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  border: 3px dashed #ccc;
+  background: #fafafa;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-dropzone:hover {
+  border-color: #999;
+  background: #f0f0f0;
+}
+
+.upload-dropzone-icon {
+  width: 48px;
+  height: 48px;
+  color: #999;
+}
+
+.upload-dropzone-text {
+  font-family: "Inter";
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.upload-dropzone-hint {
+  font-family: "Inter";
+  font-size: 14px;
+  color: #999;
+}
+
+.upload-preview-grid {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.upload-preview-item {
+  flex: 1;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.upload-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.replace-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0,0,0,0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "Inter";
+  font-size: 18px;
+  color: white;
+
+  z-index: 5;
+  cursor: pointer;
+}
+
+.upload-preview-item:hover .upload-preview-img {
+  filter: brightness(0.6);
+}
+
+.upload-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+
+  font-size: 18px;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.upload-remove-btn:hover {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.upload-add-more {
+  flex: 1;
+  border-radius: 8px;
+  border: 3px dashed #ccc;
+  background: #fafafa;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-add-more:hover {
+  border-color: #999;
+  background: #f0f0f0;
+}
+
+.upload-add-icon {
+  width: 36px;
+  height: 36px;
+  color: #999;
+}
+
+.crop-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  z-index:999;
+}
+
+.crop-container{
+  width:420px;
+  height:420px;
+  position:relative;
+}
+
+.crop-actions{
+  margin-top:20px;
+  display:flex;
+  gap:16px;
+}
+
+.crop-actions button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+
+.restart-button{
+  margin-left:auto;
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:8px;
+}
+
+.restart-icon{
+  width:24px;
+  height:24px;
+}
+
+.back-frame {
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
