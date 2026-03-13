@@ -295,3 +295,9 @@
     font-family:"Inter";
     color:#333;
   }
+
+  /* FIX SINGLE FRAME TEXT POSITION */
+.preview-container:not(.multi-layout) .photo-label{
+  left:90%;
+  margin-left:40px;
+}
