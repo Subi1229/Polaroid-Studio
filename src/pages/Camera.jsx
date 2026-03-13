@@ -16,6 +16,9 @@ function Camera() {
   const [countdown, setCountdown] = useState(null);
   const [isCounting, setIsCounting] = useState(false);
 
+  const [cameraReady, setCameraReady] = useState(false);
+const [cameraError, setCameraError] = useState(null);
+
   // Redirect if no film selected
   useEffect(() => {
     if (!selectedFilm) {
@@ -35,13 +38,18 @@ function Camera() {
     async function startCamera() {
       try {
         stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
-          await videoRef.current.play();
         }
       } catch (error) {
-        console.error("Camera error:", error);
+        setCameraReady(false);
+        if (error.name === "NotAllowedError" || error.name === "PermissionDeniedError") {
+          setCameraError("Camera access was denied. Please allow camera access and refresh.");
+        } else if (error.name === "NotFoundError") {
+          setCameraError("No camera found on this device.");
+        } else {
+          setCameraError("Could not access camera. Please check your settings and refresh.");
+        }
       }
     }
 
@@ -63,6 +71,7 @@ function Camera() {
   const maxPhotos = selectedFilm.type === "single" ? 1 : 3;
 
   function handleCapture() {
+    if (!cameraReady) return;  
     if (isCounting) return;
     if (capturedImages.length >= maxPhotos) return;
 
@@ -153,10 +162,26 @@ setCapturedImages((prev) => [...prev, imageData]);
             <div className="camera-inner">
   
               <div className="camera-preview">
+              {cameraError && (
+    <div style={{
+      position:"absolute", inset:0,
+      display:"flex", flexDirection:"column",
+      alignItems:"center", justifyContent:"center",
+      background:"#1a1a1a", color:"#ccc",
+      fontFamily:"Inter", fontSize:"13px",
+      textAlign:"center", padding:"20px",
+      zIndex:2, gap:"10px"
+    }}>
+      <span style={{fontSize:"32px"}}>📷</span>
+      <p>{cameraError}</p>
+    </div>
+  )}
+
               <video
   ref={videoRef}
   autoPlay
   playsInline
+  onCanPlay={() => setCameraReady(true)}
   className={`camera-video ${isCounting ? "dark-preview" : ""}`}
   style={{
     filter:
@@ -176,6 +201,9 @@ setCapturedImages((prev) => [...prev, imageData]);
               <button
   className="press-button"
   onClick={capturedImages.length < maxPhotos ? handleCapture : handleContinue}
+  disabled={!cameraReady && capturedImages.length < maxPhotos}
+  style={{ opacity: !cameraReady && capturedImages.length < maxPhotos ? 0.5 : 1,
+           cursor: !cameraReady && capturedImages.length < maxPhotos ? "not-allowed" : "pointer" }}
 >
   {capturedImages.length < maxPhotos ? "Press" : "Continue"}
 </button>
