@@ -8,9 +8,11 @@ import Camera from './pages/Camera'
 import Upload from './pages/Upload'
 import Printing from './pages/Printing'
 import Preview from './pages/Preview'
+import DesktopOnly from "./components/DesktopOnly";
 
 function App() {
   return (
+    <DesktopOnly>
     <AppProvider>
       <BrowserRouter>
         <Routes>
@@ -24,6 +26,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </AppProvider>
+    </DesktopOnly>
   )
 }
 
