@@ -34,7 +34,7 @@ function DesktopOnly({ children }) {
 
           <p style={{ fontSize: "16px", maxWidth: "420px", lineHeight: "1.6" }}>
             Polaroid Studio is designed for desktop screens to give you the
-            full photobooth experience.
+            full experience.
             <br /><br />
             Please open this website on a laptop or computer.
           </p>
