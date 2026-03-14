@@ -204,7 +204,9 @@ function Preview() {
             </div>
             <p class="hint">
               To share via <strong>Nearby Share or Bluetooth</strong>: click Download first, then use your file manager or system share to send the saved image.
-            To share via <strong>WhatsApp or Twitter</strong>: click Copy Image first, then click Share to WhatsApp or Twitter and then paste the image in the message or post respectively.
+              <br>
+              To share via <strong>WhatsApp or Twitter</strong>: click Copy Image first, then click Share to WhatsApp or Twitter and then paste the image in the message or post respectively.
+            
               </p>
             <script>
               async function copyImage() {
